@@ -1,0 +1,73 @@
+//aray es6 destructuring//////////////////////////
+let a=["jugal" , "sharmna" , "knaika" , "karan0"]
+let[top1 , top2 , tip3 , top4]=a
+let[top11,,,top44]=a
+console.log(top1)
+console.log(top4)
+console.log(top44)
+
+
+//swap/////////////////////////////
+// a=5;b=10;
+// b=5;a=10;
+// console.log(a ,b)
+let a=5;
+let b=10;
+let temp=a
+a=b;
+b=temp;
+temp=a;
+console.log(a , b)
+[a,b]=[b,a]
+console.log(a ,b)
+
+
+
+///////////////////////object destructing
+let object={
+    name:"jugal",
+    classs:"10th",
+    roll:"23"
+}
+let{name, classs, roll}=object;
+console.log(object)
+
+console.log(name)
+console.log(classs)
+
+
+//defult parmenter//////////////////////
+
+function one(a ,b=2){
+
+    console.log(a*b)
+}
+one(4)
+
+
+
+
+///////////rest parameter//////////////////////
+function one(a , b){
+console.log(a ,b)
+}
+one(4 , 2,47586687679)
+
+
+function sum(...input){
+    console.log(input)
+}
+
+sum(1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9)
+
+
+//////////////spared opraet...
+
+function two(){
+
+}
+
+let a=[5 , 5 , 6]
+let b=[7 , 80 , 9]
+
+console.log(...a , ...b)

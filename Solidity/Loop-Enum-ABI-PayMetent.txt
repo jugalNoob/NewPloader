@@ -1,0 +1,425 @@
+pragma solidity 0.8.6;
+
+contract Cont{
+function Lo()public pure returns(uint){
+uint count=0;
+for(uint i=0; i<10; i++){
+    count=count+5;
+}
+return count;
+uint j=0;
+while(j<10){
+    count=count+5;
+  j=j+2;
+}
+return count;
+}
+ }
+
+
+ 
+uint[5] public arr;
+
+function ara(uint _x)public{
+
+    for(uint i=0; i<arr.length; i++){
+
+        arr[i]=_x+i;
+    }
+}
+
+
+||WEhile Loop ||||||||||||||||||||||||||||||||||||||||||||||
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.9;
+
+
+contract Loop{
+
+    uint256[] data;
+
+    uint8 j=0;
+
+    function loop()public returns(uint256[] memory){
+    
+    while (j < 5){
+
+        j++;
+
+        data.push(j);
+    }
+
+    return  data;
+    
+    }
+
+
+}
+
+||||||||||||||
+
+   uint256[] jugal;
+
+
+function loops() public returns(uint256[] memory){
+for(uint256 i=0; i<5; i++){
+
+    jugal.push(i);
+}
+
+return  jugal;
+}
+
+
+
+|||||||||||||||Enum all pratices|||||||||||||||||||
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.5.0 <0.9.0;
+
+
+contract ENUMS{
+
+//Bool
+
+// bool public one=true;
+
+//Shoopin website
+
+//1::Pending ->0
+//2::shipping ->1
+//3:acpeted ->2
+//4:rejected ->3
+//5::cancel  ->4
+
+//why enums use in smart contract --> maintence 
+ //Use --lower of bugs
+
+ enum Status{
+     Pending, //0
+     Shipped, // 1
+     Accepted, //2
+     Rejected, // 3
+     Cancel  // 4
+ }
+
+Status  public status;
+
+function get() public  view returns(Status){
+
+return  status;
+}
+
+
+function setStatus(Status _st)public{
+
+    status=_st;
+}
+
+function rej()public {
+    status=Status.Rejected;
+}
+
+function reset()public{
+    delete  status;
+}
+
+}
+
+
+
+contract Practies {
+    enum Number { one, two, three }
+    Number public number;
+
+    function one() public pure returns (Number) {
+        return Number.one;
+    }
+
+    function two() public pure returns (Number) {
+        return Number.two;
+    }
+
+    function three() public pure returns (Number) {
+        return Number.three;
+    }
+
+    function sortNumber(Number _num) public {
+        number = _num;
+    }
+
+    function checkNumber() public view returns (Number) {
+        return number;
+    }
+
+    function compareNumber(Number _num1, Number _num2) public pure returns (bool) {
+        return uint8(_num1) > uint8(_num2);
+    }
+
+    function addNumbers(Number _num1, Number _num2) public pure returns (Number) {
+        uint8 sum = uint8(_num1) + uint8(_num2);
+        require(sum <= 3, "Sum exceeds the maximum value");
+        return Number(sum);
+    }
+}
+
+
+contract Test{
+
+enum Size{small , medium , large}
+
+
+Size public choies=Size.small;
+
+
+function setSmall()public {
+
+    choies=Size.small;
+}
+
+function setLarge()public{
+        choies=Size.large;
+}
+
+function setMedium()public{
+        choies=Size.medium;
+}
+
+}
+
+
+
+contract State{
+
+    enum User{allowed , allowed_not , wait}
+
+User public user=User.allowed;
+
+uint public lottery=1000;
+
+function oner()public{
+    if(user== User.allowed){
+lottery=0;
+
+    }
+}
+
+function changowner()public{
+    user=User.allowed_not;
+}
+
+}
+
+
+
+contract EnumContract {
+    enum Status { Active, Inactive, Pending }
+
+    Status public currentStatus;
+
+    constructor() {
+        currentStatus = Status.Active;
+    }
+
+    function updateStatus(Status _newStatus) public {
+        currentStatus = _newStatus;
+    }
+
+    function getStatus() public view returns (Status) {
+        return currentStatus;
+    }
+}
+
+
+
+
+
+contract Upload{ 
+
+enum Product{
+    buy,
+    sell,
+    product,
+    canacel,
+    reqject,
+    reset
+}
+
+Product private  product;
+
+
+
+function checkBuy()public pure returns(Product){
+
+
+return  Product.buy;
+}
+
+
+function checkProduct()public view returns(Product){
+
+    return product;
+}
+
+function checkBuys()public pure returns(Product){
+
+return  Product.sell;
+}
+
+function setstatus(Product _prod)public{
+
+product=_prod;
+}
+
+function rejectes()public{
+    product=Product.reqject;
+}
+
+function allreset()public{
+
+    delete product;
+}
+
+
+}
+
+
+
+contract State{
+
+    enum user{
+        allowed , not_allowrd , wait
+}
+
+    user public ui=user.allowed;
+
+
+   uint public lottery=100;
+
+   function owner()public {
+       if(ui == user.allowed){
+
+lottery=0;
+       }
+   }
+
+   function change()public{
+
+       ui=user.not_allowrd;
+   }
+}
+
+
+
+||||||||||||||||Enum|||||||||||STRUCT||||||||||||
+contract ProductContract {
+    
+    enum ProductStatus { Pending, Approved, Rejected }
+    
+    struct Product {
+        uint256 id;
+        string name;
+        uint256 price;
+        ProductStatus status;
+    }
+    
+    mapping(uint256 => Product) public products;
+    
+    uint256 public nextProductId;
+    
+    function createProduct(string memory _name, uint256 _price) public {
+        Product memory newProduct = Product({
+            id: nextProductId,
+            name: _name,
+            price: _price,
+            status: ProductStatus.Pending
+        });
+        
+        products[nextProductId] = newProduct;
+        nextProductId++;
+    }
+    
+    function getProductStatus(uint256 _productId) public view returns (ProductStatus) {
+        return products[_productId].status;
+    }
+    
+    function approveProduct(uint256 _productId) public {
+        require(products[_productId].status == ProductStatus.Pending, "Product is not pending approval.");
+        products[_productId].status = ProductStatus.Approved;
+    }
+    
+    function rejectProduct(uint256 _productId) public {
+        require(products[_productId].status == ProductStatus.Pending, "Product is not pending approval.");
+        products[_productId].status = ProductStatus.Rejected;
+    }
+}
+
+
+
+
+||||||||ABI|||||||||||||||||||||
+//SPDX-License-Identifier: MIT
+pragma solidity ^0.8.7;
+
+contract AbIDecode{
+
+    struct MyStruct{
+        string name;
+        uint[2] nums;
+    }
+
+function encode(uint x , address add , uint[] calldata arr , MyStruct calldata mystruct)public pure returns(bytes memory){
+
+return abi.encode(x, add, arr, mystruct);
+}
+
+function decode(bytes calldata data)external  pure  returns(uint x , address add , uint[] memory arr ,MyStruct memory mystruct  ){
+
+(x , add , arr , mystruct) = abi.decode(data, (uint , address , uint[] , MyStruct));
+}
+
+}
+
+
+||||||||||||||||||PAyMent|||||||||||||||||||
+
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity >=0.8.2 <0.9.0;
+
+
+contract ZKM{
+
+
+// address payable  public getter=payable (0x5B38Da6a701c568545dCfcB03FcB875f56beddC4);
+
+
+receive ()  external  payable {}
+function CheckBalance( )public view returns(uint256){
+
+return  address(this).balance;
+}
+
+
+function sendEther(address  payable  getter)public   payable  
+
+    bool sent=getter.send(msg.value);
+    require(sent, "tranf is falid");
+}
+
+function Transfer( address payable  getter , uint one)public payable  {
+
+    getter.transfer(one);
+
+}
+
+function Call(address payable  getter )public  {
+
+   (bool sent , bytes memory data)=getter.call{value:1000000000000000000}("");
+
+    require(sent, "tranf is falid");
+
+
+}
+}
+

@@ -1,0 +1,248 @@
+1::What is stack?
+
+// let data=[];
+// let cureent=data.length;
+// let max=5;
+// //
+// function push(newel){
+//     if(cureent > max){
+//         console.log("mother fucker" , newel)
+// }else{
+//     data[cureent]=newel;
+//     cureent+=1
+
+// }
+// }
+// //
+// function pop(){
+
+//     if(cureent >0){
+
+//         cureent-=1;
+
+//         data.length=cureent
+
+//     }else{
+
+//         alert("stack is arlready empty")
+//     }
+// }
+// push(20)
+// push(30)
+// push(40)
+// push(50)
+// push(60)
+// push(70)
+// push(80)
+// ///
+// pop()
+// ///
+// pop()
+// console.log(data)
+
+///Button use inpute and outpute
+
+
+let data=[];
+let cureent=data.length;
+let max=5;
+//
+function push(){
+
+    let newel= document.getElementById('newEl').value;
+    if(cureent > max){
+        console.log("mother fucker" , newel)
+}else{
+    data[cureent]=newel;
+    cureent+=1
+
+}
+}
+//
+function pop(){
+
+    if(cureent >0){
+
+        cureent-=1;
+
+        data.length=cureent
+
+    }else{
+
+        alert("stack is arlready empty")
+    }
+}
+
+push()
+
+// push(20)
+// push(30)
+// push(40)
+// push(50)
+// push(60)
+// push(70)
+// push(80)
+///
+pop()
+///
+pop()
+
+
+
+console.log(data)
+
+function display(){
+
+    for(let i=0; i<=cureent-1; i++){
+
+        console.log(data[i])
+
+    }
+}
+
+
+///Stack in  Class Objects 
+
+
+class Stack { 
+  
+    // Array is used to implement stack 
+    constructor() 
+    { 
+        this.items = []; 
+    }
+    // push function 
+push(element) 
+{ 
+	// push element into the list items 
+	this.items.push(element); 
+} 
+// pop function 
+pop() 
+{ 
+	
+	if (this.items.length == 0) 
+		return "Underflow"; 
+	return this.items.pop(); 
+} 
+
+// isEmpty function 
+isEmpty() 
+{ 
+	// return true if stack is empty 
+	return this.items.length == 0; 
+} 
+
+// peek function 
+peek() 
+{ 
+	
+	return this.items[this.items.length - 1]; 
+} 
+
+}
+
+// defining a new stack
+var mystack = new Stack()
+
+// checking to see if stack is empty
+console.log(mystack.isEmpty());
+// Adding elements to the stack 
+mystack.push(1); 
+mystack.push(2); 
+mystack.push(3); 
+
+// Printing the stack element 
+// prints [1, 2, 3] 
+console.log("printing stack");
+var str = ""; 
+for (var i = 0; i <= mystack.items.length-1; i++){
+	str = str+ mystack.items[i] + " ";
+  }
+console.log(str);
+
+// returns 3
+console.log("Peek = " + mystack.peek()); 
+
+// removes 3 from stack 
+mystack.pop(); 
+
+// returns [1, 2] 
+console.log("printing stack after pop");
+str = ""; 
+for (var i = 0; i <= mystack.items.length-1; i++){
+		str = str+ mystack.items[i] + " ";
+  }
+console.log(str);
+ 
+
+ //////////////Stack Use  class function
+ 
+
+      class Stack {
+        item = [];
+        currentSize;
+        maxSize;
+        constructor(size) {
+          this.maxSize = size;
+          this.currentSize = this.item.length;
+        }
+        push(newVal) {
+            if(this.currentSize>=this.maxSize){
+                alert("stack is full");
+            }else{
+                this.item[this.currentSize]=newVal;
+                this.currentSize++;
+            }
+        }
+        pop() {
+            if(this.currentSize>0){
+                this.currentSize--;
+                this.item.length=this.currentSize;
+            }else{
+                alert("stack is already empty")
+            }
+        }
+        display() {
+            console.warn(this.item)
+        }
+      }
+      st1 = new Stack(5);
+    //   st1.push(20)
+    //   st1.display();
+
+
+    ////////////NOTE - Revers String in stack //ANCHOR - 
+    
+//ANCHOR - //!SECTION
+let data =[];
+let currentSize=data.length;
+function push(newVal){
+   data[currentSize]=newVal;
+   currentSize+=1;
+}
+function pop(){
+   lastRemovedItem=data[currentSize-1];
+   currentSize-=1;
+   data.length=currentSize;
+   return lastRemovedItem;
+}
+
+function reverseStr(item){
+   for(let i=0;i<item.length;i++){
+       push(item[i])
+   }
+   for(let i=0;i<item.length;i++){
+   item[i]=pop();
+   }
+   
+}
+
+
+let str="jugal sharma";
+str=str.split("");
+reverseStr(str)
+console.warn(str.join(""))
+
+
+

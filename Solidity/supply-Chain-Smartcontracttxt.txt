@@ -1,0 +1,53 @@
+pragma solidity ^0.8.0;
+
+contract SoapSupplyChain {
+
+  address public seller;
+  address public buyer;
+  uint public price;
+  enum State { Created, Paid, Shipped, Received }
+  State public state;
+
+  constructor() {
+    seller = msg.sender;
+    price = 1 ether;
+    state = State.Created;
+  }
+
+  modifier onlySeller() {
+    require(msg.sender == seller, "Only the seller can perform this action.");
+    _;
+  }
+
+  modifier onlyBuyer() {
+    require(msg.sender == buyer, "Only the buyer can perform this action.");
+    _;
+  }
+
+  modifier inState(State _state) {
+    require(state == _state, "Invalid state.");
+    _;
+  }
+
+  event PurchaseConfirmed();
+  event ItemShipped();
+  event ItemReceived();
+
+  function confirmPurchase() public payable inState(State.Created) {
+    require(msg.value == price, "Invalid payment amount.");
+    buyer = msg.sender;
+    state = State.Paid;
+    emit PurchaseConfirmed();
+  }
+
+  function shipItem() public onlySeller inState(State.Paid) {
+    state = State.Shipped;
+    emit ItemShipped();
+  }
+
+  function confirmReceipt() public onlyBuyer inState(State.Shipped) {
+    state = State.Received;
+    seller.transfer(price);
+    emit ItemReceived();
+  }
+}

@@ -1,0 +1,134 @@
+import sha256 from 'crypto-js/sha256';
+import  hmacSHA512  from 'crypto-js/hmac-sha512';
+  https://cryptojs.gitbook.io/docs/#hashing
+  Original documentation: https://code.google.com/archive/p/crypto-js/
+
+  
+  const hash = sha256('hello jugal');
+  console.log(hash.toString());
+  const hash2=sha256('hello jugal')
+
+  console.log(hash2.toString())
+
+  console.log(hash.toString()=== hash2.toString())
+
+
+  
+
+  //////////////////
+
+    const key = 'mySecretKey';
+const message = 'Hello, world!';
+const hashs = hmacSHA512(message, key);
+
+console.log('HMAC-SHA512 Hash:', hashs.toString().length);
+  
+
+
+const messages = 'Hello, world!';
+const hashss = hmacSHA512(messages, key);
+
+console.log('HMAC-SHA512 Hash:', hashss
+
+.toString().length);
+
+console.log(hashss.toString() === hashs.toString())
+
+//////////////encrypted decryption
+
+
+///////////symmetric-encrypt.js //////// enc 
+const plaintext = 'my message';
+const secretKey = 'secret key 123';
+const ciphertext = CryptoJS.AES.encrypt(plaintext, secretKey).toString();
+
+console.log(ciphertext)
+// Decrypt
+const bytes = CryptoJS.AES.decrypt(ciphertext, secretKey);
+const originalText = bytes.toString(CryptoJS.enc.Utf8);
+
+console.log(originalText); // 'my message'
+
+
+/////////////////////// To perform asymmetric encryption ////////
+
+ useEffect(() => {
+  const crypt = new JSEncrypt({ default_key_size: 2048 });
+  const publicKey = crypt.getPublicKey();
+  const privateKey = crypt.getPrivateKey();
+
+  console.log(publicKey)
+
+console.log(privateKey)
+  // Encrypt with the public key
+  const plaintext = 'my message';
+  const encrypted = crypt.encrypt(plaintext);
+
+  console.log('Encrypted:', encrypted);
+
+  // Decrypt with the private key
+  const decrypted = crypt.decrypt(encrypted);
+
+  console.log('Decrypted:', decrypted);
+
+}, []);
+
+
+
+
+
+////////////Salt in crypto ////////
+ // Generate a random salt
+    const salt = CryptoJS.lib.WordArray.random(16);
+
+    // Perform cryptographic operations
+    const password = 'myPassword';
+
+    // Hashing
+    const hashedPassword = CryptoJS.PBKDF2(password, salt, {
+      keySize: 64,
+      iterations: 10000,
+      hasher: CryptoJS.algo.SHA512,
+    }).toString();
+
+    console.log('Hashed password:', hashedPassword);
+  }, []);
+
+
+
+
+/////////////////////!SECTION
+
+import React from 'react';
+import Cookies from 'js-cookie';
+
+const MyComponent = () => {
+  // Set a cookie
+  const setCookie = () => {
+    Cookies.set('myCookie', 'cookieValue');
+  };
+
+  // Get a cookie
+  const getCookie = () => {
+    const cookieValue = Cookies.get('myCookie');
+    console.log(cookieValue);
+  };
+
+  // Delete a cookie
+  const deleteCookie = () => {
+    Cookies.remove('myCookie');
+  };
+
+  return (
+    <div>
+      <button onClick={setCookie}>Set Cookie</button>
+      <button onClick={getCookie}>Get Cookie</button>
+      <button onClick={deleteCookie}>Delete Cookie</button>
+    </div>
+  );
+};
+
+export default MyComponent;
+
+
+//////////////////////////

@@ -1,0 +1,123 @@
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity >=0.8.2 <0.9.0;
+
+
+contract  UploadImageUserMessage {
+
+struct Upload{
+
+   
+
+    uint age;
+
+    string name;
+
+    string country;
+
+    string image;
+
+    // address _add;
+
+
+}
+
+mapping (address=>mapping (uint256=>Upload[]))private  Information;
+
+uint nextId;
+
+function UploadInformation(uint _age , string memory _name , string memory _country ,string memory _image,address _add )public{
+
+
+require(_age > 18 , "enter your greater the 18");
+
+require(_add != address(0) , "enter your address");
+
+Upload memory Pushing=Upload(  _age , _name , _country ,_image  );
+
+Information[_add][nextId].push(Pushing);
+
+nextId++;
+
+}
+
+
+
+
+
+function DeleteInformationUpload(address _add , uint _numb)public{
+
+require(_add != address(0) , "enter your address");
+    delete   Information[_add][_numb];
+
+    nextId --;
+}
+
+
+function CheckUserInformation(address _add , uint num)public  view returns(Upload[] memory){
+
+
+    return Information[_add][num];
+}
+
+function FullLength()public view returns(uint256){
+
+    return  nextId;
+}
+
+
+   //Add Messages Group
+    struct Identity {
+  
+        address to;
+        string mess;
+        
+    }
+
+    mapping(address => Identity[]) private identities;
+
+    function verifyIdentity(address from , address _to , string memory _mess) public {
+
+require(bytes(_mess).length > 0 && bytes(_mess).length <100, " only hunder word enter");
+
+
+
+require(_to != address(0) ,"please enter a adddress" );
+
+//   require(nextId > 0 && Information[from][nextId-1][0].add == from, "sender has not added information");
+
+
+    
+        Identity memory newIdentity = Identity( _to,_mess);
+        identities[from].push(newIdentity);
+
+
+    }
+
+  function getIdentity(address _address , uint index) public view returns (string memory) {
+       require(index < identities[_address].length, "Identity not found");
+       return  (identities[_address][index].mess);
+           
+       
+     }
+
+    function GetAll(address _add )public view returns(Identity[] memory){
+
+        return identities[_add];
+    }
+
+
+    function Length(address _addre)public view returns(uint256){
+
+        return identities[_addre].length;
+
+    }
+
+      function DeleteDate(address _Del)public{
+  
+     require(_Del != address(0) , "inavload loppp");
+    delete identities[_Del];
+}
+
+    
+}

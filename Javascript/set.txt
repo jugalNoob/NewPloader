@@ -1,0 +1,17 @@
+// Create a Set
+const letters = new Set(["a","b","c"]);
+
+letters.add("a");
+
+let text = "";
+letters.forEach (function(value) {
+  text += value;
+})
+
+
+let text="jugal Cats Dogs"
+
+text = text.replaceAll("Cats","Dogs");
+text = text.replaceAll("cats","dogs");
+
+console.log(text)

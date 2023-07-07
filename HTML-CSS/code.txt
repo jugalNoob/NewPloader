@@ -1,0 +1,132 @@
+//Text gradent
+
+  <h1 class="gradient-text">Hello, World!</h1>
+  .gradient-text {
+    font-size: 72px;
+    background: linear-gradient(to right, #bb7df1, #00ffaa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .box {
+    width: 200px;
+    height: 200px;
+    background-color: gray;
+  }
+  
+
+  ||||||||background image 
+  <div class="container">
+  <h1>Welcome to my website</h1>
+</div>
+
+
+.container {
+  background-image: url("path/to/image.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  color: white;
+  font-size: 3rem;
+}
+
+||||||||||<div class="box"></div>
+
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+  animation: rotation 2s linear infinite;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+|||||||Image object-fit
+
+object-fit
+
+
+
+|||||||||animation css||||||||||||||
+
+ .animation{
+    width: 200px;
+    height: 200px;
+    background-color: rebeccapurple;
+  animation-name: sample;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+animation-direction: alternate;
+color: rgb(243, 57, 57);
+user-select: none;
+
+
+  }
+
+
+  .animation{
+    
+  }
+
+
+  @keyframes sample{
+
+0%{
+  border-radius: 0px;
+}
+100%{
+  border-radius: 10%;
+}
+  }
+
+
+  ||||Transition|||||||||||||||||||||||||
+
+  .animation{
+
+    width: 200px;
+  height: 200px;
+  background-color: gray;
+  transition: 2s all
+  }
+
+  .animation:hover{
+
+    width: 300px;
+    height: 300px;
+    background-color: rgb(232, 10, 10);
+    border-radius: 50px;
+    transition:2s all;
+    transform:rotate(60deg)
+  }
+
+  ||||||||Two background image||||||||||||||||
+
+  body {
+  background: url('path/to/image1.jpg') top left no-repeat, url('path/to/image2.jpg') bottom right no-repeat;
+  background-size: auto, auto;
+  background-attachment: fixed, fixed;
+  background-color: #fff;
+}

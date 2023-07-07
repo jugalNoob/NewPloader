@@ -1,0 +1,40 @@
+1::Python 
+2:Pandas
+3:Numpy
+4:Statistics
+6:Metaplotlib
+
+
+||||||||||Not all algo are equal
+
+1::SVM
+
+2:Linear 
+
+3:Random forest true
+
+4:Training and testing Data
+
+5:Logistic Regression 
+
+6:Decision tress
+
+7:bagging
+
+8:boosting 
+
+9:Naive Bayes:
+
+10:K-Means: 
+
+11:Neural Networks: A machine learning technique that attempts to replicate the workings of the human brain by using interconnected nodes to learn from data.
+
+
+|||||||||////Keras||||||||||||
+
+Keras is a high-level neural networks API written in Python and designed to be user-friendly, modular, and extensible. It is a popular open-source framework used for building deep learning models.
+
+Keras can be used to create a wide variety of deep learning projects, including:
+
+
+||||||||

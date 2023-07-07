@@ -1,0 +1,49 @@
+import React from 'react'
+import * as THREE from 'three';
+import Web3 from 'web3';
+import abi from "./ABI.json"
+
+
+function Meta() {
+
+  const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.z = 5;
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+  const web3 = new Web3(window.ethereum);
+  const metaContract = new web3.eth.Contract(abi, "0x8Cb1A066B5C8d88F8aE8b9f121cD538A5b1318f6");
+
+  async function renderNFTs() {
+    const totalNFTs = await metaContract.methods.totalSupply().call();
+    for (let i = 1; i <= totalNFTs; i++) {
+      console.log(totalNFTs)
+        const owner = await metaContract.methods.ownerOf(i).call();
+        console.log(owner)
+        const nftInfo = await metaContract.methods.getOwnerObjects().call({ from: owner });
+        console.log(nftInfo)
+        const geometry = new THREE.BoxGeometry(nftInfo.w, nftInfo.h, nftInfo.d);
+        const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+        const nft = new THREE.Mesh(geometry, material);
+        scene.add(nft);
+        nft.position.set(nftInfo.x, nftInfo.y, nftInfo.z);
+    }
+}
+
+// Animate loop
+function animate() {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+}
+animate();
+
+// Initialize Metaverse
+renderNFTs();
+  return (
+    <div>Meta  metaverse</div>
+  )
+}
+
+export default Meta

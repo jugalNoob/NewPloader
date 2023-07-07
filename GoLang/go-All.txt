@@ -1,0 +1,305 @@
+//Varable
+
+package main
+
+import "fmt"
+
+func main() {
+
+	//fmt.Println("jugal sharma")
+	// var student1 string = "John" //type is string
+	// var student2 = "Jane" //type is inferred
+	name := "jugal"
+	rool := 32
+
+	fmt.Println(name, rool)
+
+	var stu = "jsjj"
+
+	fmt.Println(stu)
+
+}
+
+package main
+import ("fmt")
+
+func main() {
+  var a bool = true     // Boolean
+  var b int = 5         // Integer
+  var c float32 = 3.14  // Floating point number
+  var d string = "Hi!"  // String
+
+  fmt.Println("Boolean: ", a)
+  fmt.Println("Integer: ", b)
+  fmt.Println("Float:   ", c)
+  fmt.Println("String:  ", d)
+}
+
+//Constant/////////!SECTION
+
+
+
+
+/////Array |||||||||||||||||
+
+func main() {
+  var arr1 = [3]int{1,2,3}
+  arr2 := [5]int{4,5,6,7,8}
+
+  fmt.Println(arr1)
+  fmt.Println(arr2)
+}
+
+
+func main() {
+  var arr1 = [...]int{1,2,3}
+  arr2 := [...]int{4,5,6,7,8}
+ var cars = [4]string{"Volvo", "BMW", "Ford", "Mazda"}
+  fmt.Println(arr1)
+  fmt.Println(arr2)
+}
+
+
+  prices := [3]int{10,20,30}
+
+  prices[2] = 50
+  fmt.Println(prices)
+
+  func main() {
+  arr1 := [5]int{} //not initialized
+  arr2 := [5]int{1,2} //partially initialized
+  arr3 := [5]int{1,2,3,4,5} //fully initialized
+
+  fmt.Println(arr1)
+  fmt.Println(arr2)
+  fmt.Println(arr3)
+    fmt.Println(len(arr1))
+}
+
+
+///////Go Operators///////!SECTION
+
+  var a = 15 + 25
+  fmt.Println(a)
+
+   var (
+    sum1 = 100 + 50 // 150 (100 + 50)
+    sum2 = sum1 + 250 // 400 (150 + 250)
+    sum3 = sum2 + sum2 // 800 (400 + 400)
+  )
+  fmt.Println(sum3)\
+
+
+
+  //If -else/////////////!SECTION
+
+    if 20 > 18 {
+    fmt.Println("20 is greater than 18")
+  }
+
+   time := 20
+  if (time < 18) {
+    fmt.Println("Good day.")
+  } else {
+    fmt.Println("Good evening.")
+  }
+
+    time := 22
+  if time < 10 {
+    fmt.Println("Good morning.")
+  } else if time < 20 {
+    fmt.Println("Good day.")
+  } else {
+    fmt.Println("Good evening.")
+  }
+
+
+  day := 8
+
+  switch day {
+  case 1:
+    fmt.Println("Monday")
+  case 2:
+    fmt.Println("Tuesday")
+  case 3:
+    fmt.Println("Wednesday")
+  case 4:
+    fmt.Println("Thursday")
+  case 5:
+    fmt.Println("Friday")
+  case 6:
+    fmt.Println("Saturday")
+  case 7:
+    fmt.Println("Sunday")
+  default:
+    fmt.Println("Not a weekday")
+  }
+
+
+||||||||||Looping start ||||||||||||||||||||
+
+  for i:=0; i < 5; i++ {
+    fmt.Println(i)
+  }
+
+    for i:=0; i <= 100; i+=10 {
+    fmt.Println(i)
+  }
+
+
+
+|||||||||||||||||||
+
+package main
+import ("fmt")
+
+func myMessage() {
+  fmt.Println("I just got executed!")
+}
+
+func main() {
+  myMessage() // call the function
+}
+
+
+package main
+import ("fmt")
+
+func myFunction(x int, y int) int {
+  return x + y
+}
+
+func main() {
+  fmt.Println(myFunction(1, 2))
+}
+
+
+func myFunction(x int, y int) (result int) {
+  result = x + y
+  return
+}
+
+func main() {
+  fmt.Println(myFunction(1, 2))
+
+}
+
+
+|||||||||||||||||Struct goLang||||||||||||||
+
+package main
+import ("fmt")
+
+type Person struct {
+  name string
+  age int
+  job string
+  salary int
+}
+
+
+type Person struct {
+  name string
+  age int
+  job string
+  salary int
+}
+
+func main() {
+  var pers1 Person
+  var pers2 Person
+
+  // Pers1 specification
+  pers1.name = "Hege"
+  pers1.age = 45
+  pers1.job = "Teacher"
+  pers1.salary = 6000
+
+  // Pers2 specification
+  pers2.name = "Cecilie"
+  pers2.age = 24
+  pers2.job = "Marketing"
+  pers2.salary = 4500
+
+  // Access and print Pers1 info
+  fmt.Println("Name: ", pers1.name)
+  fmt.Println("Age: ", pers1.age)
+  fmt.Println("Job: ", pers1.job)
+  fmt.Println("Salary: ", pers1.salary)
+
+  // Access and print Pers2 info
+  fmt.Println("Name: ", pers2.name)
+  fmt.Println("Age: ", pers2.age)
+  fmt.Println("Job: ", pers2.job)
+  fmt.Println("Salary: ", pers2.salary)
+}
+
+
+|||||||||||||Mapping |||||||||||||||||||||||||||||
+
+package main
+import ("fmt")
+
+func main() {
+  var a = map[string]string{"brand": "Ford", "model": "Mustang", "year": "1964"}
+  b := map[string]int{"Oslo": 1, "Bergen": 2, "Trondheim": 3, "Stavanger": 4}
+
+  fmt.Printf("a\t%v\n", a)
+  fmt.Printf("b\t%v\n", b)
+}
+
+
+package main
+import ("fmt")
+
+func main() {
+  var a = make(map[string]string) // The map is empty now
+  a["brand"] = "Ford"
+  a["model"] = "Mustang"
+  a["year"] = "1964"
+                                 // a is no longer empty
+  b := make(map[string]int)
+  b["Oslo"] = 1
+  b["Bergen"] = 2
+  b["Trondheim"] = 3
+  b["Stavanger"] = 4
+
+  fmt.Printf("a\t%v\n", a)
+  fmt.Printf("b\t%v\n", b)
+}
+
+///Inputes|||||||||||||||||||||||||||||||||
+
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	var name string
+
+	fmt.Print("Enter your name: ")
+	fmt.Scan(&name)
+
+	fmt.Printf("Hello, %s!\n", name)
+}
+
+
+||||||||||||||||||Go is a popular language for building blockchain-related projects due to its efficiency, speed, and ability to handle concurrency. Here are a few types of blockchain projects that can be built using Go:
+
+Blockchain node implementation: A blockchain node is responsible for validating transactions, maintaining the blockchain ledger, and participating in the consensus protocol. Many blockchain node implementations, such as Ethereum's Go implementation (Geth) and Bitcoin's btcd, are written in Go.
+
+Smart contract development: Go is one of the programming languages that can be used to write smart contracts on some blockchain platforms, like Ethereum. Smart contracts are self-executing contracts with the terms of the agreement between buyer and seller being directly written into lines of code.
+
+dApps development: Go can be used to build decentralized applications (dApps) that run on blockchain platforms. These applications can be built using various frameworks and libraries such as Ethermint, Tendermint, and Cosmos-SDK.
+
+Blockchain tools development: Go is well-suited for developing various blockchain-related tools such as wallet applications, block explorers, transaction monitoring, and analytics tools.
+
+Cryptocurrency exchange: Go can be used to build cryptocurrency exchanges that allow users to buy, sell, and trade cryptocurrencies.
+
+Consensus algorithm: Go can be used to develop consensus algorithms, which are at the heart of most blockchain systems. A consensus algorithm is a process that ensures that all nodes on a blockchain network agree on the state of the ledger.
+
+Permissioned blockchain development: Go can be used to develop permissioned blockchain networks that are typically used in enterprise settings.
+
+These are just a few examples of the types of blockchain projects that can be developed using Go. Go's efficiency, speed, and ability to handle concurrency make it a popular choice for building blockchain-related projects.

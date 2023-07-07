@@ -1,0 +1,98 @@
+import pandas  as pd
+import numpy as np
+
+
+
+ ///DataFrames
+#dict1 convert to Pd
+
+dict1={
+    "name":["jugal" , "sharma" , "karan" , "anku"],
+    "marks":[92 , 40 , 20 , 68],
+    "city":["jammu" , "rampur" , "pinkcity" , "newYokr"]
+} 
+
+#print(dict1["name"])
+df=pd.DataFrame(dict1)
+print(df)
+#use a list of indexes:
+#print(df.loc[[0, 1]])
+#convet to csv file
+#df.to_csv("friend.csv")
+#ff.dtypes
+#df.columns
+#df.rows
+#df.to_csv("friend.csv" , index=False)
+df.types
+new.info()
+df.head(2)
+
+
+
+////read_csv file
+
+#read csv file
+
+js=pd.read_csv("Shett.csv")
+js.head(5)
+#df.tail(4)
+#js["Price"]
+#df.describe()
+#skiprow
+
+#ff=pd.read_csv("Shett.csv"  , skiprows=[1 ,2,3])
+
+#ff
+
+
+
+
+#create a reandom 
+ser=pd.Series(np.random.rand(20))
+
+ser
+type(ser)
+
+
+////Reand DataFrame
+
+new=pd.DataFrame(np.random.rand(20 , 10), index=np.arange(20))
+type(new)
+new.index#check index 
+#new.columns
+new.to_numpy()#convert to numpy
+new.head(5)
+##new.sort_index(axis=0 , ascending=False)
+
+
+
+///////////Null Nana
+
+#remove null and NaN values
+
+nan=pd.read_csv("nullnan.csv")
+
+#nan.isnull()#check null value Show True
+nan.isnull().sum()#second check value NAN 
+
+nan.dropna()
+
+#print(nan.to_string())
+nan.fillna(2, inplace = True)
+nan.dropna(inplace=True, axis=0)
+#nan.drop_duplicates(inplace=True)
+
+# Create a DataFrame with some missing values
+data = {'A': [1, 2, 3, 4, None], 'B': [5, None, 7, 8, 9]}
+df = pd.DataFrame(data)
+
+# Fill missing values with the median of column A
+median = df['A'].median()
+df['A'].fillna(median, inplace=True)
+median = df['B'].median()
+df['B'].fillna(median, inplace=True)
+# Print the DataFrame to verify the changes
+print(df)
+nan
+
+

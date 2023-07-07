@@ -1,0 +1,200 @@
+
+import React from 'react'
+import * as THREE from 'three';
+import "./three.css"
+import {OrbitControls, orbitControls} from "three/examples/jsm/controls/OrbitControls.js"
+import * as dat from "dat.gui"
+import one from "./one.jpg"
+
+function Three() {
+
+    const scene = new THREE.Scene();
+    scene.background=new THREE.Color(0x000)
+    const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+    
+    const renderer = new THREE.WebGLRenderer();
+
+    //shadow ligghting
+    renderer.shadowMap.enabled=true
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    document.body.appendChild( renderer.domElement );
+
+
+
+
+    //Import area Row 
+
+    
+const geometry_area = new THREE.BoxGeometry( 100 , 0.2 , 50);
+const material_area = new THREE.MeshBasicMaterial( { color: 0xfff } );
+const area = new THREE.Mesh( geometry_area, material_area );
+scene.add( area);
+
+
+//Important cube
+const geometry = new THREE.BoxGeometry( 5, 5, 5 );
+const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+const cube = new THREE.Mesh( geometry, material );
+scene.add( cube );
+
+cube.receiveShadow=true
+
+
+//Cylendir
+
+const planegeometry = new THREE.CylinderGeometry( 5 , 5 , 20 , 32 );
+const planematerial = new THREE.MeshStandardMaterial( {color: 0xffff00, side: THREE.DoubleSide} );
+const plane = new THREE.Mesh( planegeometry, planematerial );
+scene.add( plane );
+
+
+
+//Lignthing scence
+const ambienter=new THREE.AmbientLight(0x333333)
+scene.add(ambienter)
+
+
+
+
+
+///BackGround changes Images
+const textureloader=new THREE.TextureLoader();
+
+// scene.background=textureloader.load(
+//     one
+// )
+
+const cubeTextureLoader = new THREE.CubeTextureLoader();
+// scene.background = cubeTextureLoader.load([
+//     nebula,
+//     nebula,
+//     stars,
+//     stars,
+//     stars,
+//     stars
+// ]);
+
+const geometry_box = new THREE.BoxGeometry( 5, 5, 5 );
+const material_box = new THREE.MeshBasicMaterial( { 
+    
+    // color: 0x00ff00 ,
+
+    map:textureloader.load(one)
+
+} );
+const box = new THREE.Mesh( geometry_box, material_box );
+scene.add( box );
+
+box.position.set(0 , 15 , 10)
+
+
+const directionalLight=new THREE.DirectionalLight(0xfffff , 0.8)
+scene.add(directionalLight)
+
+cube.position.set(10, 5 , 10)
+plane.position.set(20 , 5 , 0)
+camera.position.z=5
+camera.position.set(20 , 5 , 40)
+
+
+
+//Rotation function 
+function animate() {
+cube.rotation.x +=0.01
+cube.rotation.y +=0.01
+renderer.render( scene, camera );
+
+}
+renderer.setAnimationLoop(animate)
+
+renderer.render(scene , camera)
+
+  return (
+    <div>
+
+        <h1>jugaka,
+        </h1>
+    </div>
+  )
+}
+
+export default Three
+
+
+//////////////////////////////Webiste create line||||||||||||||||||||||||||
+
+
+
+import React, { useEffect } from 'react'
+import * as THREE from 'three';
+import "./three.css"
+import two from "./two.jpg"
+
+function Three() {
+
+  useEffect(() => {
+    const container = document.querySelector(".three_bg")
+
+    const loader=new THREE.TextureLoader()
+    const scene = new THREE.Scene();
+    
+
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+    const renderer = new THREE.WebGLRenderer();
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    container.appendChild(renderer.domElement);
+    const geometry = new THREE.PlaneGeometry( 14 , 8 , 15 , 9);
+    const material = new THREE.MeshBasicMaterial( {
+
+
+      map:loader.load(two)
+     } );
+    const cube = new THREE.Mesh( geometry, material );
+    scene.add(cube)
+
+
+
+
+
+    camera.position.z=5;
+
+    function animation(){
+
+      requestAnimationFrame(animation)
+      renderer.render( scene, camera );
+    }
+    animation()
+  }, []);
+
+
+
+
+  return (
+    <div>
+      <div className="content">
+      <header>
+
+        <div className="three_bg"></div>
+        <div className="nav">
+          <div className="nav_list">
+            <li><a href="">home</a></li>
+            <li><a href="">home</a></li>
+            <li><a href="">3d backhround</a></li>
+            <li><a href="">links</a></li>
+          </div>
+        </div>
+<div className="head">
+  <h1>jugal sharma</h1>
+</div>
+        </header>
+      </div>
+      
+   
+    </div>
+  )
+}
+
+export default Three

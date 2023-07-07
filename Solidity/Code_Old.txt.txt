@@ -1,0 +1,530 @@
+
+
+
+||||||Global variabale
+
+Name	Returns
+blockhash(uint blockNumber) returns (bytes32)	Hash of the given block - only works for 256 most recent, excluding current, blocks
+block.coinbase (address payable)	Current block miner's address
+block.difficulty (uint)	Current block difficulty
+block.gaslimit (uint)	Current block gaslimit
+block.number (uint)	Current block number
+block.timestamp (uint)	Current block timestamp as seconds since unix epoch
+gasleft() returns (uint256)	Remaining gas
+msg.data (bytes calldata)	Complete calldata
+msg.sender (address payable)	Sender of the message (current caller)
+msg.sig (bytes4)	First four bytes of the calldata (function identifier)
+msg.value (uint)	Number of wei sent with the message
+now (uint)	Current block timestamp
+tx.gasprice (uint)	Gas price of the transaction
+tx.origin (address payable)	Sender of the transaction
+
+contract Start{
+uint public one=10;
+
+function View()public view returns(uint){
+
+    return one;
+}
+
+function Pure()public pure returns(uint){
+
+    uint two=10;
+    return two;
+}
+}
+
+////////if///////string////////
+
+function Ifes(uint age)public pure returns(string memory){
+
+if(bytes(name).length > bytes(name).length){
+
+}
+
+    string memory man;
+    if(age > 18){
+
+        man="jugal sharma";
+    }else{
+
+        man="kanika";
+    }
+
+    return man;
+}
+
+
+
+
+/////////array //////
+
+
+uint[] public one=[10 ,20 , 30 , 40 , 50];
+
+function Push(uint _one)public {
+
+    one.push(_one);
+}
+
+function Len()public view returns(uint){
+
+    return one.length;
+}
+
+function Pop()public{
+    one.pop();
+}
+
+///////////////modifiers////////////
+contract Start{
+
+uint public one;
+
+string public two;
+ address owner;
+
+constructor(uint _one , string memory _two){
+
+    one=_one;
+    two=_two;
+     owner = msg.sender;
+}
+
+ modifier onlyOwner{
+
+  require(msg.sender == owner);
+     _;
+ }
+
+ function Mod()public view onlyOwner{
+
+ }
+
+}
+
+///////////add Money //////In ethere//////////
+
+address payable public owner=payable(msg.sender);
+
+receive()  external payable{
+}
+
+function Balance()public view returns(uint){
+
+    return address(this).balance;
+}
+
+function AddMoney()public{
+
+    owner.transfer(5 ether);
+}
+
+/////////////bytes//////////////////
+
+bytes public one="j";
+
+function Push()public{
+
+    one.push('k');
+}
+
+function Pop()public{
+
+    one.pop();
+}
+
+
+function Length()public view returns(uint){
+
+    return one.length;
+}
+
+
+function GetElemt(uint _id)public view returns(bytes1){
+
+    return one[_id];
+}
+
+
+
+///////////mapping /////////////
+
+mapping(address =>string)public One;
+
+function First(string memory _name)public{
+
+    One[msg.sender]=_name;
+}
+
+mapping (address =>mapping(uint=>string)) public Two;
+
+function Sec(uint _age , string memory names)public{
+
+    Two[msg.sender][_age]=names;
+}
+
+
+//////struct ////////////
+
+
+
+contract Start{
+
+
+struct First{
+
+    uint  age;
+    string name;
+    string place;
+    string country;
+}
+
+First public emp;
+
+function Enters(uint _age , string memory _name , string memory _place , string memory _country)public{
+
+    First memory emp1=First(_age , _name , _place , _country);
+
+    emp=emp1;
+
+
+}
+}
+
+
+
+
+
+///////event ///////////
+
+contract Start{
+
+event one(address owen , address from , string name);
+
+
+
+function First(address _from , string memory _name)public{
+
+    emit one(msg.sender , _from , _name);
+}
+
+}
+
+///////////////ENUMS//////////////
+
+
+enum Status{
+    Pending , 
+    Shipped , 
+    Accepted , 
+    Rejected,
+    Canacled
+}
+
+Status public status;
+
+
+function Getstatus()public view returns(Status){
+return status;
+
+}
+
+function setStatus(Status _st)public{
+
+    status=_st;
+}
+
+
+function rej()public{
+
+    status=Status.Rejected;
+}
+
+
+function del()public{
+
+    delete status;
+}
+
+
+////Constant//////
+
+uint public one=18;
+
+uint public constant two=18;
+
+
+
+
+////Constructor/////////
+
+
+contract Twitter{
+
+uint public age;
+
+
+
+constructor(uint _age) {
+
+age=_age;
+
+}
+
+
+}
+////////Loop for and WHile Loop/////////
+function loop()public pure returns(uint){
+
+  uint count=0;
+
+  for(uint i=0; i<10; i++){
+
+    count=count+5; 
+
+  }
+
+  return count;
+}
+
+
+////Inheritance////////
+
+
+contract Twitter{
+function Fun1() public  pure virtual  returns(string memory){
+  return "i am func1 start";
+}
+
+function Fun2() public pure virtual returns(string memory){
+  return "i am func2 start";
+}
+}
+
+contract Two is Twitter{
+function Fun1() public pure override  returns(string memory){
+  return "i am kanika start";
+}
+
+function Fun2() public pure override returns(string memory){
+  return "i am jugal start";
+}
+}
+
+
+
+/////passing parameter////
+
+contract Twitter{
+
+string public name;
+
+uint public age;
+
+
+constructor(string memory _name , uint _age){
+
+name=_name;
+age=_age;
+}
+
+}
+
+contract B{
+
+  string public add;
+
+  uint public salary;
+
+  constructor(string memory _add , uint _salary){
+
+add=_add;
+
+salary=_salary;
+
+  }
+}
+
+//Order of execution
+
+A . B . C
+
+
+contract C is Twitter,B{
+
+constructor()   Twitter("jugal" , 22) B("delhi" , 200){
+
+}
+
+}
+
+contract D is Twitter,B{
+
+constructor(string memory _name , uint _age,string memory _add , uint _salary) Twitter(_name , _age) B(_add ,_salary){
+  
+}
+
+}
+
+
+
+
+////////////////Tweek
+
+ // SPDX-License-Identifier: GPL-3.0
+
+
+pragma solidity >=0.7.0 <0.9.0;
+
+contract Meassge{
+  struct User{
+
+string addname;
+
+string addplace;
+
+    }
+
+mapping(address=>User)public users;
+
+
+ function AllInfo(string memory _addname , string memory _addplace)public {
+users[msg.sender]=User(_addname , _addplace);
+ }
+
+
+  struct Mess{
+
+uint age;
+
+string  messages;
+
+    }
+
+    
+mapping(address=>Mess)public All;
+
+function Messagess(uint _age , string memory _messages)public {
+ 
+ string memory mes;
+
+require(_age>18 , "please  above 18 age enter");
+
+
+ if(bytes(_messages).length >5){
+
+     All[msg.sender]=Mess(_age , _messages);
+ }else{
+
+     mes="error line row class";
+ }
+
+}
+
+
+
+function DeletInfo()public{
+
+     delete  All[msg.sender];
+}
+
+
+ function getUser(address user_id ) external view returns (Mess memory) {
+        return All[user_id];
+    }
+
+}
+
+////Difference between Memory and Storage and Stack in Solidity?//////
+
+
+
+
+
+//////////Advanced/////////////
+
+1:inheritance
+2:constructor
+3:abstract contract
+4:interface
+5:libraries
+6:assembly
+7:events
+8:Error handling
+
+///Abstracts contracts///
+
+
+The abstract contract is an abstract design of a contract and the implementation contract provides the implementation of the abstract function in it.
+
+Abstract contracts are contracts that have at least one function without implementation.
+
+abstract Contracts are contracts that are created with abstract keywords.
+
+
+abstract contract One{
+
+  uint public name;
+  function GH() public pure virtual returns(uint);
+
+}
+
+
+contract B is One{
+function GH() public pure override returns(uint){
+
+  return 22;
+}
+
+
+
+////////interface//////////
+
+
+// interface can not have constructor
+
+//interface can not have state variable
+
+//function of  an interface can be only of external
+
+//interface only external visbisblty
+
+// by duffect virtual 
+interface base{
+
+  function get() external pure returns(uint);
+}
+
+
+contract B is base{
+    function get() external pure override returns(uint){
+      return 22;
+    }
+}
+
+
+////libaray///////
+
+
+pragma solidity >=0.7.0 <0.9.0;
+
+
+
+library fun{
+
+  function Fun1()public pure returns(uint){
+
+    return 5+4;
+  }
+}
+
+contract B {
+
+function ju()public pure returns(uint){
+
+return fun.Fun1();
+}
+
+}
+

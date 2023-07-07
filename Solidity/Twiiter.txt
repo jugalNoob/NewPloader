@@ -1,0 +1,165 @@
+
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity >=0.7.0 <0.9.0;
+
+contract Start{
+
+struct Emp{
+uint age;
+string message;
+
+}
+
+mapping(uint=>Emp)public Name;
+
+function AddressStruct( uint Adders, uint _age , string memory _messages)public{
+
+ string memory mes;
+
+require(_age>18 , "Please Enter your age 18 Plue");
+ if(bytes(_messages).length >5 && bytes(_messages).length <35){
+
+     Name[Adders]=Emp(_age , _messages);
+     Adders++;
+ }else{
+
+     mes="error line row class";
+ }
+
+
+
+}
+
+function DeletInfo(uint _Adders )public{
+
+     delete  Name[_Adders];
+}
+
+function CheckInfo(uint user_Id)public view returns(Emp memory){
+
+return Name[user_Id];
+
+}
+
+}
+
+///////////////////////////////////////////////////////////
+
+
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity >=0.7.0 <0.9.0;
+
+contract Start{
+
+struct Emp{
+uint age;
+string message;
+
+}
+
+mapping(uint=>Emp)public Name;
+
+function AddressStruct( uint Adders, uint _age , string memory _messages)public{
+
+ string memory mes;
+
+require(_age>18 , "Please Enter your age 18 Plue");
+ if(bytes(_messages).length >5 && bytes(_messages).length <35){
+
+     Name[Adders]=Emp(_age , _messages);
+     Adders++;
+ }else{
+
+     mes="error line row class";
+ }
+
+
+
+}
+
+function DeletInfo(uint _Adders )public{
+
+     delete  Name[_Adders];
+}
+
+function CheckInfo(uint user_Id)public view returns(Emp memory){
+
+return Name[user_Id];
+
+}
+
+}
+
+
+////////////////////////New Twitter Messages ////////////////////
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity >=0.7.0 <0.9.0;
+
+contract MeesageContract{
+
+struct UserInfo{
+
+uint age;
+
+string name;
+
+string country;
+
+string gender;
+}
+
+mapping(address=>UserInfo)private  User;
+
+function CheckUser(address _user , uint _age, string memory _name , string memory _country , string memory _gender)public{
+
+User[_user]=UserInfo(_age , _name,_country, _gender);
+}
+    
+
+function userDisplay(address _user) public view returns (UserInfo memory) {
+        return User[_user];
+    }
+
+
+  mapping(address=>string[]) sendMessage;
+
+
+function userAdd( address _user, string memory country,string memory mess) public {
+
+
+    require(_user != address(0) , "enter your address");
+
+
+require(bytes(mess).length >0 && bytes(mess).length <100 ,"");
+require(bytes(country).length >0 ,"");
+
+
+    string[] storage userValues = sendMessage[_user];
+    userValues.push(country);
+    userValues.push(mess);
+
+ sendMessage[_user] = userValues;
+}
+
+
+function displayMessage(address _user)public view returns(string[] memory){
+   require(_user != address(0) , "enter your address");
+    return   sendMessage[_user];
+}
+
+function deletes(address _user)public {
+     require(_user != address(0) , "enter your address");
+       delete sendMessage[_user];
+}
+
+function LengthGet(address _user) public view returns(uint256){
+     require(msg.sender != address(0) , "enter your address");
+
+    return sendMessage[_user].length;
+}
+
+}

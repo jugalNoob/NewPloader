@@ -1,0 +1,438 @@
+0:let a="45"; --> gobale var
+
+0:function one(){
+let a=45; --> local var
+}
+
+
+
+
+
+1::Types  Functiona
+
+.Function Statement
+
+Function one(){
+
+    conseole.log("jugal")
+}
+//fn invocation
+
+one()//callFunction
+
+
+..function Expression
+
+let all=function fn(){
+    conseole.log("all)
+}
+
+all()
+
+...function Asynchronous
+
+let all=function(){
+
+    conseole.log("jugal)
+}
+
+all()
+
+
+..IIFE(immediately invoked function Expression)
+
+..Arrow function
+
+let fn=(num)=>{
+    conseole.log("jugsal")
+}
+let fn=num=>num*num;
+conseole.log(fn(5))
+
+
+::::Execution Context is called hosting is meaing memory aleard are located
+
+..global -- node ke object global
+..global -- javascript me window
+..this - node  object
+..this --js window
+
+// console.log("jugal",a)
+
+// a=10
+
+fi()
+
+function fi(){
+
+    console.log("jugal")
+}
+
+
+:::Higher Order Function 
+..Map
+..Filter
+..reducer
+
+
+::::awaite ans Asynchronou
+
+
+const lun=async()=>{
+
+    console.log("jugal")
+
+   await console.log("kanika")
+
+    console.log("karan")
+
+}
+
+console.log("anku")
+
+lun()
+
+console.log("nikhile")
+
+:::operators
+////////////////////////////////////////
+.arithmetic// console.log(5+20);
+console.log(10-5);
+console.log(20/5);
+console.log(5*6);
+
+
+.comparison
+//////////////////////////////////
+ console.log(a == b);
+ Greater than or equal (>=)
+ console.log(a >= b);
+ Less than or equal (<=)
+ console.log(a <= b);
+ Not equal (!=)
+ console.log(a != b);
+
+
+.logical
+/////////////////////////////////////////////
+ console.log(a > b && b > -50 && b < 0);
+
+  console.log((a < b) || (b > 0) || (b > 0));
+
+  
+ console.log(!((a>0) || (b<0)));
+ console.log(!true);
+
+
+// var x = 5; 
+// var y = 5;
+
+// console.log("is both the x and y are equal or not" + x == y );
+
+// I will tell you when we will see es6
+// console.log(`Is both the x and y are equal : ${x == y}`);
+
+:::loop
+////////////////////////////////////////////
+ var num = 20;
+ do{
+   debugger;
+   console.log(num); //infinte loop
+   num++;
+ }while(num <= 10);
+
+
+ :::forLoop
+for(let a=0; a<10; a++){
+
+    console.log(a)
+}
+
+:::while Loop
+let a=0;
+
+while(a<10){
+
+    console.log(a)
+
+    a++;
+}
+
+:::::::::::::Nasting --LoOp////////////////////////////
+ var arr = [[1,2], [3,4], [5,6]];
+ for (var i=0; i < arr.length; i++) {
+  for (var j=0; j < arr[i].length; j++) {
+    console.log(arr[i][j]);
+  }
+}
+
+
+
+
+:::callBack///////////////////////////////
+//////////////////////callFunction
+
+function sayhello(){
+
+    setTimeout(() => {
+        console.log("jugal sharma")
+    }, 3000);
+}
+function add(num1 , num2 , callback){
+    console.log(num1 , num2)
+    callback()
+}
+let a=10;
+let b=20;
+
+add(a ,b , sayhello)
+
+
+
+
+//jsonStringify//////////////////
+let studeny={
+    name:"jugal sharma",
+    class:"10th"
+}
+let a=JSON.stringify(studeny)
+console.log(studeny)
+console.log(a)
+
+
+/////////////jsonpara/////////////////
+const text = '["Ford", "BMW", "Audi", "Fiat"]';
+const myArr = JSON.parse(text);
+
+console.log(text)
+
+////prompt////////////confirm////////////////////////
+let a=prompt("jugal sharma")
+console.log(a)
+alert(a)
+
+let b=confirm("do you like porns video")
+console.log(b)
+
+
+
+
+/////cookies//////////////////////////////////////
+document.cookie="loc=india";
+//change cookies
+
+
+//local storage key value storage//////////////////////////////////
+localStorage.setItem("firstName" , "jugalsahtma")
+//red
+// console.log(localStorage.getItem("firstName"))
+localStorage.removeItem("firstName")
+
+//session storage///////////////////////////////////////////////
+sessionStorage.setItem("country" , "indian")
+
+document.cookie = "username=John Doe; expires=Thu, 20 Feb 2023 12:00:00 UTC";
+let x=document.cookie;
+console.log(x)
+
+
+
+
+//object///////////////////////////////////////////////////////////////
+let phone=123123123;
+
+const a={
+    name:'jugal sharma',
+    class:"10trh",
+    age:22,
+    phone:phone,
+    getData:function(){
+        // return "data is line"
+        return this.city
+
+    },
+
+    ineer:{
+        names:"kanika sharma",
+        classes:"12th"
+    }
+
+}
+
+//changes
+a.name="kanran"
+//deletes
+delete a.ineer
+//add values
+a.city="mimam"
+a['pin code']=181123
+console.log(a.name)
+console.log(a)
+console.log("city" in a)
+console.log(a.getData())
+// console.log(a.ineer.names)
+
+for(item in a){
+    console.warn(item)
+    console.log("key" + a[item])
+}
+//////////////////////////////////////
+let b=new Object(
+
+)
+
+
+///////////////Gobal Scope And Function Scope
+
+function myFunction() {
+  var carName = "Volvo";   // Function Scope
+}
+
+
+var x = 2;       // Global scope
+
+
+//////////////This Keyword
+
+
+What is this?
+In JavaScript, the this keyword refers to an object.
+
+Which object depends on how this is being invoked (used or called).
+
+
+///////////////////////////JavaScript Closures
+function one(){
+
+    let a=10;
+    function two(){
+
+        let b=20;
+
+        console.log(a * b)
+
+    }
+
+    two()
+}
+
+one()
+
+
+
+/////////////////////Promises////////////////////////
+
+function myDisplayer(some) {
+  document.getElementById("demo").innerHTML = some;
+}
+
+let myPromise = new Promise(function(myResolve, myReject) {
+  let x = 0;
+
+// The producing code (this may take some time)
+
+  if (x == 0) {
+    myResolve("OK");
+  } else {
+    myReject("Error");
+  }
+});
+
+myPromise.then(
+  function(value) {myDisplayer(value);},
+  function(error) {myDisplayer(error);}
+);
+
+
+////////////////////////////Call , Apply , Bind in javascript
+different in all of these
+
+what is special in bind?
+
+why can make a simple function?
+
+///Call function meaing is function reusable  in object operator
+
+
+let start={
+
+    firstname:"jugal sharma",
+    lastname:"kanika sharma",
+    age:30,
+
+    getEmail:function(){
+        return `${this.firstname} ${this.lastname}@test.com`
+    }
+}
+let end={
+
+    firstname:"peter",
+    lastname:"parker",
+    age:30,
+
+  
+}
+function getEmail(){
+    return this.email= `${this.firstname} ${this.lastname}@test.com`
+}
+
+function ChooseEmail(sub1 , sub2){
+//     return `${this.firstname} ${this.lastname}@test.com`
+return sub1 + sub2
+
+}
+
+// console.log(getEmail.apply(end))
+// console.log(start.getEmail.call(end)) -->> any type of parm
+// console.log(ChooseEmail.apply(end, [" method " , " english "]))// -->> only array type of para
+// let all=getEmail.bind(end) //bind create a function but not call()
+// console.log(all())
+
+
+
+console.log(getEmail.apply(end))
+console.log(end)
+
+///////////////////////////////////////////////////////
+1. Variables
+2. Data Types
+..Null
+..Undifined
+..Boolean
+..string
+..number
+..Arrays
+..Object
+..NaN
+.BigNumber
+let x = Number.MAX_VALUE;
+
+console.log(x)
+
+////////////////////////////////
+
+
+
+
+3. Operators
+4. Control Flow
+5. Functions
+6. Objects
+7. Arrays
+8. Classes
+9. Error Handling
+10. DOM Manipulation
+
+11.await
+...
+
+1. Closures
+2. Asynchronous JavaScript
+3. Promises
+4. ES6 Features
+5. Modules
+6. Object-Oriented Programming
+7. Functional Programming
+8. Webpack
+9. React
+10. Node.js
