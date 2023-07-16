@@ -1,4 +1,57 @@
 
+/////message sneder limit //////
+//  mapping(address => uint) public clickCounts;
+//     uint public limit = 3;
+
+//     function clicked() public {
+//         require(clickCounts[msg.sender] < limit, "Maximum click limit reached");
+
+//         clickCounts[msg.sender]++;
+//     }
+
+
+
+
+
+////////////////////////////////////// onlyClick 5 time
+uint public clickCount = 0;
+uint public limit = 3;
+uint public age1;
+uint public age2;
+uint public age3;
+string public name;
+
+function clicked() public {
+    if (clickCount < limit) {
+        clickCount++;
+        if (clickCount == 1) {
+            age1 = 23;
+        } else if (clickCount == 2) {
+            age2 = 698;
+        } else if (clickCount == 3) {
+            age3 = 102;
+        }
+    } else {
+        name = "kisdkks";
+        delete clickCount;
+        clickCount = 0; // Reset click count if limit exceeded
+        limit++; // Increase the limit by 1
+        delete  age1;
+        delete  age2;
+        delete  age3;
+    }
+}
+
+}
+
+contract Practiess{
+
+    bytes public one="jug"; // bits 10 
+}
+
+
+
+
 
 
 ||||||Global variabale
